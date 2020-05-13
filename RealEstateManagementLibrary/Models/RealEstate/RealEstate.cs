@@ -1,4 +1,4 @@
-namespace RealEstateManagementLibrary
+namespace RealEstateManagementLibrary.Models.RealEstate
 {
     /// <summary>
     /// This abstract class represents one real estate. 

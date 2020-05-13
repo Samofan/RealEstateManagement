@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace RealEstateManagementLibrary
+namespace RealEstateManagementLibrary.Models.RealEstate
 {
     /// <summary>
     /// Represents an apartment complex. This is not a living unit but you can buy it anyway.

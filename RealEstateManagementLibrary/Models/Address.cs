@@ -1,4 +1,6 @@
-namespace RealEstateManagementLibrary
+using RealEstateManagementLibrary.Models.RealEstate;
+
+namespace RealEstateManagementLibrary.Models
 {
     /// <summary>
     /// Represents an address of a <see cref="RealEstate"/>.

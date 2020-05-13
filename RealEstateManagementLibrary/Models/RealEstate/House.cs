@@ -1,4 +1,4 @@
-namespace RealEstateManagementLibrary
+namespace RealEstateManagementLibrary.Models.RealEstate
 {
     /// <summary>
     /// Represents a house that comes with a plot around the house.

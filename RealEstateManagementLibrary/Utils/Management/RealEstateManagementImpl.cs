@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using RealEstateManagementLibrary.Models.RealEstate;
 
 namespace RealEstateManagementLibrary.Utils.Management
@@ -7,19 +8,31 @@ namespace RealEstateManagementLibrary.Utils.Management
     /// </summary>
     public class RealEstateManagementImpl : IRealEstateManagement
     {
+        private List<RealEstate> _realEstates = new List<RealEstate>();
+        
         public void Add(RealEstate realEstate)
         {
-            throw new System.NotImplementedException();
+            _realEstates.Add(realEstate);
         }
-
+        
         public void Remove(RealEstate realEstate)
         {
-            throw new System.NotImplementedException();
+            _realEstates.Remove(realEstate);
+        }
+        
+        public void Remove(int index)
+        {
+            _realEstates.RemoveAt(index);
         }
 
-        public void Update(RealEstate realEstate)
+        public void Update(int index, RealEstate realEstate)
         {
-            throw new System.NotImplementedException();
+            _realEstates[index] = realEstate;
+        }
+
+        public RealEstate Get(int index)
+        {
+            return _realEstates[index];
         }
     }
 }

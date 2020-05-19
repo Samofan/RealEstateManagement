@@ -3,7 +3,7 @@ namespace RealEstateManagementLibrary.Models.RealEstate
     /// <summary>
     /// Represents a house that comes with a plot around the house.
     /// </summary>
-    public class House : LivingUnit
+    public class House : RealEstate
     {
         /// <summary>
         /// The size of the plot in square meters.
@@ -25,7 +25,7 @@ namespace RealEstateManagementLibrary.Models.RealEstate
         /// <returns>A house human friendly.</returns>
         public override string ToString()
         {
-            return "";
+            return "[HOUSE]\nPlot size: " + PlotSize + base.ToString() + "\n";
         }
     }
 }

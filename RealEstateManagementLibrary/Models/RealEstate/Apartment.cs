@@ -3,7 +3,7 @@ namespace RealEstateManagementLibrary.Models.RealEstate
     /// <summary>
     /// Represents an apartment.
     /// </summary>
-    public class Apartment : LivingUnit
+    public class Apartment : RealEstate
     {
         /// <summary>
         /// ToString method of Apartment.
@@ -11,7 +11,7 @@ namespace RealEstateManagementLibrary.Models.RealEstate
         /// <returns>An apartment human friendly.</returns>
         public override string ToString()
         {
-            return "";
+            return "[APARTMENT]" + base.ToString() + "\n";
         }
     }
 }

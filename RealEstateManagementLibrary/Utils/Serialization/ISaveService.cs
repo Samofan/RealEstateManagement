@@ -4,7 +4,7 @@ using System.Text;
 
 namespace RealEstateManagementLibrary.Utils.Serialization
 {
-    public interface ISavePOCOS
+    public interface ISaveService
     {
         void SaveAsJson();
 

@@ -31,6 +31,16 @@ namespace RealEstateManagementLibrary.Models.RealEstate
         private Address _address;
 
         /// <summary>
+        /// The size of the RealEstate in square meters.
+        /// </summary>
+        private int _size;
+
+        /// <summary>
+        /// The amount of rooms of the RealEstate.
+        /// </summary>
+        private int _amountOfRooms;
+
+        /// <summary>
         /// Properties of _forSale.
         /// </summary>
         public bool ForSale
@@ -76,12 +86,49 @@ namespace RealEstateManagementLibrary.Models.RealEstate
         }
 
         /// <summary>
+        /// Properties of _size.
+        /// </summary>
+        public int Size
+        {
+            get => _size;
+            set => _size = value;
+        }
+
+        /// <summary>
+        /// Properties of _amountOfRooms.
+        /// </summary>
+        public int AmountOfRooms
+        {
+            get => _amountOfRooms;
+            set => _amountOfRooms = value;
+        }
+
+        /// <summary>
         /// ToString method of RealEstate.
         /// </summary>
         /// <returns>A RealEstate human friendly.</returns>
         public override string ToString()
         {
-            return "";
+            return IsForSale()
+                   + _address
+                   + "\nSize: " + _size
+                   + "\nAmount of rooms: " + _amountOfRooms;
+        }
+
+        private string IsForSale()
+        {
+            var returnString = "";
+            
+            if (_forSale)
+            {
+                returnString = "\nFor sale: true\nPurchase price: " + _purchasePrice;
+            }
+            else
+            {
+                returnString = "\nFor rent: true\nRental price: " + _rentalPrice;
+            }
+
+            return returnString;
         }
     }
 }

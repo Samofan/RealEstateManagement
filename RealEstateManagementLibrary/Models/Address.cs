@@ -8,15 +8,15 @@ namespace RealEstateManagementLibrary.Models
     public class Address
     {
         /// <summary>
-        /// The country.
+        /// The street.
         /// </summary>
-        private string _country;
+        private string _street;
 
         /// <summary>
-        /// The state.
+        /// The house number.
         /// </summary>
-        private string _state;
-
+        private string _houseNumber;
+        
         /// <summary>
         /// The zip code.
         /// </summary>
@@ -28,33 +28,23 @@ namespace RealEstateManagementLibrary.Models
         private string _city;
 
         /// <summary>
-        /// The street.
+        /// Properties of _street.
         /// </summary>
-        private string _street;
-
-        /// <summary>
-        /// The house number.
-        /// </summary>
-        private string _houseNumber;
-
-        /// <summary>
-        /// Properties of _country.
-        /// </summary>
-        public string Country
+        public string Street
         {
-            get => _country;
-            set => _country = value;
+            get => _street;
+            set => _street = value;
         }
-
+        
         /// <summary>
-        /// Properties of _state.
+        /// Properties of _houseNumber.
         /// </summary>
-        public string State
+        public string HouseNumber
         {
-            get => _state;
-            set => _state = value;
+            get => _houseNumber;
+            set => _houseNumber = value;
         }
-
+        
         /// <summary>
         /// Properties of _zipCode.
         /// </summary>
@@ -73,24 +63,6 @@ namespace RealEstateManagementLibrary.Models
             set => _city = value;
         }
 
-        /// <summary>
-        /// Properties of _street.
-        /// </summary>
-        public string Street
-        {
-            get => _street;
-            set => _street = value;
-        }
-
-        /// <summary>
-        /// Properties of _houseNumber.
-        /// </summary>
-        public string HouseNumber
-        {
-            get => _houseNumber;
-            set => _houseNumber = value;
-        }
-        
         /// <summary>
         /// ToString method of Address.
         /// </summary>

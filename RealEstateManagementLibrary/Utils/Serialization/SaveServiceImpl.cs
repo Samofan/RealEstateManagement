@@ -8,11 +8,11 @@ using System.Text.Json;
 
 namespace RealEstateManagementLibrary.Utils.Serialization
 {
-    class SavePOCOSImpl : ISavePOCOS
+    class SaveServiceImpl : ISaveService
     {
         string filePath;
 
-        public SavePOCOSImpl(string filePath)
+        public SaveServiceImpl(string filePath)
         {
             this.filePath = filePath;
         }
@@ -25,9 +25,7 @@ namespace RealEstateManagementLibrary.Utils.Serialization
                 PurchasePrice = 100000,
                 Address = new Address
                 {
-                    Country = "Germany",
                     City = "Siegen",
-                    State = "NRW",
                     ZipCode = "57072",
                     Street = "Frankfurter Straße",
                     HouseNumber = "32"

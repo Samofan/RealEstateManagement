@@ -1,8 +1,14 @@
+using System;
+using System.Xml.Serialization;
+
 namespace RealEstateManagementLibrary.Models.RealEstate
 {
     /// <summary>
     /// This abstract class represents one real estate. 
     /// </summary>
+    [XmlInclude(typeof(House))]
+    [XmlInclude(typeof(Apartment))]
+    [Serializable]
     public abstract class RealEstate
     {
         /// <summary>

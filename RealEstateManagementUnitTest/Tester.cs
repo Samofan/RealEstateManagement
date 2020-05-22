@@ -76,7 +76,7 @@ namespace RealEstateManagementUnitTest
         [Fact]
         private void TestRealEstateManagement()
         {
-            var realEstateManagement = new RealEstateManagementImpl();
+            var realEstateManagement = new RealEstateManagementImpl(true);
 
             #region Add
 
@@ -139,6 +139,20 @@ namespace RealEstateManagementUnitTest
             );
 
             #endregion
+        }
+
+        /// <summary>
+        /// Tests if serializing of the objects in the real estate list works.
+        /// </summary>
+        [Fact]
+        private void TestSerializeToXml()
+        {
+            var realEstateManagement = new RealEstateManagementImpl(true);
+            
+            realEstateManagement.Add(TestApartment);
+            realEstateManagement.Add(TestHouse);
+            
+            realEstateManagement.Save();
         }
     }
 }

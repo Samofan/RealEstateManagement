@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using RealEstateManagementLibrary.Models.RealEstate;
 
 namespace RealEstateManagementLibrary.Utils.Management
@@ -38,5 +39,16 @@ namespace RealEstateManagementLibrary.Utils.Management
         /// <param name="index">The index of the <see cref="RealEstate"/>.</param>
         /// <returns>A <see cref="RealEstate"/> from the list.</returns>
         RealEstate Get(int index);
+
+        /// <summary>
+        /// Saves the current real estate list to an XML file.
+        /// </summary>
+        void Save();
+
+        /// <summary>
+        /// Loads the serialized objects from the XML file.
+        /// </summary>
+        /// <returns>A list of all RealEstate objects that are saved in the XML file.</returns>
+        List<RealEstate> Load();
     }
 }

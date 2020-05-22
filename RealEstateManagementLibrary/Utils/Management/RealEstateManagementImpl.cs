@@ -64,7 +64,12 @@ namespace RealEstateManagementLibrary.Utils.Management
         {
             return _realEstates[index];
         }
-        
+
+        public IEnumerable<RealEstate> GetAll()
+        {
+            return _realEstates;
+        }
+
         public void Save()
         {
             var serializer = new XmlSerializer(typeof(List<RealEstate>));

@@ -41,6 +41,12 @@ namespace RealEstateManagementLibrary.Utils.Management
         RealEstate Get(int index);
 
         /// <summary>
+        /// Get all list items.
+        /// </summary>
+        /// <returns>All <see cref="RealEstate"/> items in the list.</returns>
+        IEnumerable<RealEstate> GetAll();
+
+        /// <summary>
         /// Saves the current real estate list to an XML file.
         /// </summary>
         void Save();

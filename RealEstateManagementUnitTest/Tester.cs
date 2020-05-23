@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using RealEstateManagementLibrary.Models;
 using RealEstateManagementLibrary.Models.RealEstate;
 using RealEstateManagementLibrary.Utils.Management;
@@ -153,6 +154,20 @@ namespace RealEstateManagementUnitTest
             realEstateManagement.Add(TestHouse);
             
             realEstateManagement.Save();
+        }
+
+        [Fact]
+        private void TestDeserializeFromXml()
+        {
+            var realEstateManagement = new RealEstateManagementImpl(true);
+            
+            realEstateManagement.Add(TestApartment);
+            
+            realEstateManagement.Save();
+
+            var realEstates = realEstateManagement.Load();
+            
+            Assert.Same(realEstates[0], TestApartment);
         }
     }
 }

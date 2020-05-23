@@ -1,9 +1,11 @@
+using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
 using System.Threading.Tasks;
 using CliFx;
 using CliFx.Attributes;
+using RealEstateManagementCLI.Configuration;
 using RealEstateManagementLibrary.Models.RealEstate;
 using RealEstateManagementLibrary.Utils.Management;
 
@@ -18,11 +20,21 @@ namespace RealEstateManagementCLI.Commands
         [CommandOption("apartmentsOnly", 'p', Description = "Show apartments only.")]
         public bool ShowApartmentsOnly { get; set; } = false;
 
-        [CommandOption("sortBySize", 's', Description = "Sort the results by size (asc/desc).")]
+        [CommandOption("sortBySize", 's', Description = "Sort by size [ascending] or [descending].")]
         public string SortBySize { get; set; } = null;
         
         public ValueTask ExecuteAsync(IConsole console)
         {
+            try
+            {
+                AppConfiguration.ReadFilePath();
+            }
+            catch (FilePathNotSpecifiedException e)
+            {
+                console.Output.WriteLine(e);
+                throw;
+            }
+            
             var realEstateManagement = new RealEstateManagementImpl();
             var realEstates = realEstateManagement.GetAll();
 

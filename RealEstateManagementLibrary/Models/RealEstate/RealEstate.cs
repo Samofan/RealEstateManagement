@@ -121,6 +121,10 @@ namespace RealEstateManagementLibrary.Models.RealEstate
                    + "\nAmount of rooms: " + _amountOfRooms;
         }
 
+        /// <summary>
+        /// Checks if the RealEstate is for sale.
+        /// </summary>
+        /// <returns>A string whether it is for sale or for rent.</returns>
         private string IsForSale()
         {
             var returnString = "";

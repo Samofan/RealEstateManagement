@@ -10,6 +10,8 @@ namespace RealEstateManagementLibrary.Models.RealEstate
     [Serializable]
     public class Apartment : RealEstate, ISerializable
     {
+        // TODO: _story
+        
         /// <summary>
         /// Empty constructor.
         /// </summary>

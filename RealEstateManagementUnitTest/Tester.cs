@@ -52,7 +52,8 @@ namespace RealEstateManagementUnitTest
         private void HouseToString()
         {
             const string expectedStringHouse =
-                "[HOUSE]\nPlot size: 300\nFor sale: true\nPurchase price: 250000\nSize: 180\nAmount of rooms: 6\n";
+                "[HOUSE]\nPlot size: 300\nFor sale: true\nPurchase price: 250000\nStreet: Sandstraße\nHouse number: 112" +
+                "\nZip code: 57072\nCity: Siegen\nSize: 180\nAmount of rooms: 6\n";
             var toStringHouse = TestHouse.ToString();
 
             Assert.Equal(expectedStringHouse, toStringHouse);
@@ -65,7 +66,8 @@ namespace RealEstateManagementUnitTest
         private void ApartmentToString()
         {
             const string expectedStringApartment =
-                "[APARTMENT]\nFor rent: true\nRental price: 389\nSize: 45\nAmount of rooms: 2\n";
+                "[APARTMENT]\nFor rent: true\nRental price: 389\nStreet: Sandstraße\nHouse number: 112\nZip code: 57072" +
+                "\nCity: Siegen\nSize: 45\nAmount of rooms: 2\n";
             var apartmentToString = TestApartment.ToString();
 
             Assert.Equal(expectedStringApartment, apartmentToString);

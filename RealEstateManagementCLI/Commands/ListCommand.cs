@@ -34,8 +34,21 @@ namespace RealEstateManagementCLI.Commands
                 console.Output.WriteLine(e);
                 throw;
             }
+
+            // Create new instance of RealEstateManagementImpl if filePath is specified in app.config.
+            RealEstateManagementImpl realEstateManagement;
+
+            try
+            {
+                realEstateManagement = new RealEstateManagementImpl(AppConfiguration.ReadFilePath());
+            }
+            catch (FilePathNotSpecifiedException e)
+            {
+                console.Error.Write(e.Message);
+                
+                return default;
+            }
             
-            var realEstateManagement = new RealEstateManagementImpl();
             var realEstates = realEstateManagement.GetAll();
 
             // Check if the output should be sorted ascending or descending.

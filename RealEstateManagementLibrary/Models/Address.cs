@@ -69,7 +69,10 @@ namespace RealEstateManagementLibrary.Models
         /// <returns>An Address human friendly.</returns>
         public override string ToString()
         {
-            return "";
+            return "\nStreet: " + _street 
+                + "\nHouse number: " + _houseNumber
+                + "\nZip code: " + _zipCode
+                + "\nCity: " + _city;
         }
     }
 }

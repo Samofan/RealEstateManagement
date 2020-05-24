@@ -1,7 +1,5 @@
-using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Xml.Linq;
 using System.Xml.Serialization;
 using RealEstateManagementLibrary.Models.RealEstate;
 
@@ -13,13 +11,15 @@ namespace RealEstateManagementLibrary.Utils.Management
     public class RealEstateManagementImpl : IRealEstateManagement
     {
         private List<RealEstate> _realEstates;
+        private readonly string _filePath;
 
         /// <summary>
         /// Default constructor that loads all objects from the specified XML file into
         /// the _realEstates list.
         /// </summary>
-        public RealEstateManagementImpl()
+        public RealEstateManagementImpl(string filePath)
         {
+            _filePath = filePath;
             _realEstates = Load();
         }
 
@@ -74,7 +74,7 @@ namespace RealEstateManagementLibrary.Utils.Management
         {
             var serializer = new XmlSerializer(typeof(List<RealEstate>));
             
-            TextWriter textWriter = new StreamWriter("RealEstate.xml");
+            TextWriter textWriter = new StreamWriter(_filePath);
             
             serializer.Serialize(textWriter, _realEstates);
         }
@@ -83,7 +83,7 @@ namespace RealEstateManagementLibrary.Utils.Management
         {
             var deserializer = new XmlSerializer(typeof(List<RealEstate>));
             
-            TextReader textReader = new StreamReader("RealEstate.xml");
+            TextReader textReader = new StreamReader(_filePath);
 
             return (List<RealEstate>) deserializer.Deserialize(textReader);
         }

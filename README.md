@@ -1,4 +1,5 @@
-![.NET Core](https://github.com/Samofan/RealEstateManagement/workflows/.NET%20Core/badge.svg)
+![build](https://github.com/Samofan/RealEstateManagement/workflows/build/badge.svg)
+![tests](https://github.com/Samofan/RealEstateManagement/workflows/tests/badge.svg)
 ![GitHub repo size](https://img.shields.io/github/repo-size/Samofan/RealEstateManagement)
 ![GitHub issues](https://img.shields.io/github/issues/Samofan/RealEstateManagement)
 ![GitHub](https://img.shields.io/github/license/Samofan/RealEstateManagement)

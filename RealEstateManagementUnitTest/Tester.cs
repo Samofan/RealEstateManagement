@@ -168,13 +168,13 @@ namespace RealEstateManagementUnitTest
         {
             var realEstateManagement = new RealEstateManagementImpl(true);
             
-            realEstateManagement.Add(TestApartment);
+            realEstateManagement.Add(TestHouse);
             
             realEstateManagement.Save();
 
             var realEstates = realEstateManagement.Load();
             
-            Assert.Same(realEstates[0].ToString(), TestApartment.ToString());
+            Assert.Equal(realEstates[0].ToString(), TestHouse.ToString());
         }
     }
 }

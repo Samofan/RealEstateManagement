@@ -10,7 +10,7 @@ namespace RealEstateManagementLibrary.Utils.Management
     /// </summary>
     public class RealEstateManagementImpl : IRealEstateManagement
     {
-        private List<RealEstate> _realEstates;
+        private readonly List<RealEstate> _realEstates;
         private readonly string _filePath;
 
         /// <summary>
@@ -33,6 +33,7 @@ namespace RealEstateManagementLibrary.Utils.Management
             if (testing)
             {
                 _realEstates = new List<RealEstate>();
+                _filePath = "Test.xml";
             }
             else
             {

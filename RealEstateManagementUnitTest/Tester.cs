@@ -4,6 +4,8 @@ using RealEstateManagementLibrary.Models;
 using RealEstateManagementLibrary.Models.RealEstate;
 using RealEstateManagementLibrary.Utils.Management;
 using Xunit;
+using Xunit.Abstractions;
+using Xunit.Sdk;
 
 namespace RealEstateManagementUnitTest
 {
@@ -158,6 +160,9 @@ namespace RealEstateManagementUnitTest
             realEstateManagement.Save();
         }
 
+        /// <summary>
+        /// Check if the deserialization of an object from the XML file works.
+        /// </summary>
         [Fact]
         private void TestDeserializeFromXml()
         {
@@ -169,7 +174,7 @@ namespace RealEstateManagementUnitTest
 
             var realEstates = realEstateManagement.Load();
             
-            Assert.Same(realEstates[0], TestApartment);
+            Assert.Same(realEstates[0].ToString(), TestApartment.ToString());
         }
     }
 }

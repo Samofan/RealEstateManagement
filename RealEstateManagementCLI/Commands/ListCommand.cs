@@ -25,30 +25,9 @@ namespace RealEstateManagementCLI.Commands
         
         public ValueTask ExecuteAsync(IConsole console)
         {
-            try
-            {
-                AppConfiguration.ReadFilePath();
-            }
-            catch (FilePathNotSpecifiedException e)
-            {
-                console.Output.WriteLine(e);
-                throw;
-            }
-
             // Create new instance of RealEstateManagementImpl if filePath is specified in app.config.
-            RealEstateManagementImpl realEstateManagement;
+            var realEstateManagement = new RealEstateManagementImpl(AppConfiguration.ReadFilePath());
 
-            try
-            {
-                realEstateManagement = new RealEstateManagementImpl(AppConfiguration.ReadFilePath());
-            }
-            catch (FilePathNotSpecifiedException e)
-            {
-                console.Error.Write(e.Message);
-                
-                return default;
-            }
-            
             var realEstates = realEstateManagement.GetAll();
 
             // Check if the output should be sorted ascending or descending.
@@ -82,9 +61,12 @@ namespace RealEstateManagementCLI.Commands
             }
             else
             {
+                var counter = 1;
+                
                 foreach (var realEstate in realEstates)
                 {
-                    console.Output.WriteLine(realEstate.ToString());
+                    console.Output.WriteLine(counter + ".\n" + realEstate);
+                    counter++;
                 }   
             }
 

@@ -12,7 +12,7 @@ namespace RealEstateManagementCLI.Configuration
         /// </summary>
         public FilePathNotSpecifiedException() : base("The filepath of the XML file is not specified!")
         {
-            
+            // TODO: Test FilePathNotSpecifiedExcpetion -> does it occur at the right places?
         }
     }
 }

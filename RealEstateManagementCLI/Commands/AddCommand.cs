@@ -31,7 +31,7 @@ namespace RealEstateManagementCLI.Commands
             
             if (AddHouse && AddApartment || !AddHouse && !AddApartment)
             {
-                console.Error.WriteLine("Please define whether you want to add a house or arpartment with -o or -a.");
+                console.Error.WriteLine("Please define whether you want to add a house or apartment with -o or -a.");
                 return default;
             }
             

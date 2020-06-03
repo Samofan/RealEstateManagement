@@ -1,5 +1,9 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Net;
+using System.Xml;
+using System.Xml.Linq;
 using System.Xml.Serialization;
 using RealEstateManagementLibrary.Models.RealEstate;
 
@@ -10,7 +14,14 @@ namespace RealEstateManagementLibrary.Utils.Management
     /// </summary>
     public class RealEstateManagementImpl : IRealEstateManagement
     {
+        /// <summary>
+        /// The list that saves the real estates.
+        /// </summary>
         private readonly List<RealEstate> _realEstates;
+        
+        /// <summary>
+        /// The filepath of the XML file.
+        /// </summary>
         private readonly string _filePath;
 
         /// <summary>
@@ -76,17 +87,31 @@ namespace RealEstateManagementLibrary.Utils.Management
             var serializer = new XmlSerializer(typeof(List<RealEstate>));
             
             TextWriter textWriter = new StreamWriter(_filePath);
-            
+
             serializer.Serialize(textWriter, _realEstates);
+            
+            textWriter.Close();
+            
         }
 
         public List<RealEstate> Load()
         {
             var deserializer = new XmlSerializer(typeof(List<RealEstate>));
+
+            // Create a new empty XML file if it not exists. ArrayOfRealEstate is the root element.
+            if (!File.Exists(_filePath))
+            {
+                var xDocument = new XDocument( new XElement("ArrayOfRealEstate"));
+                xDocument.Save(_filePath);
+            }
             
             TextReader textReader = new StreamReader(_filePath);
+            
+            var realEstates = (List<RealEstate>) deserializer.Deserialize(textReader);
+            
+            textReader.Close();
 
-            return (List<RealEstate>) deserializer.Deserialize(textReader);
+            return realEstates;
         }
     }
 }

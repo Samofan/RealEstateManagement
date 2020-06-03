@@ -17,13 +17,16 @@ namespace RealEstateManagementCLI.Commands
         
         public ValueTask ExecuteAsync(IConsole console)
         {
-            if (Path == null && !ShowPath)
+            if (Path == null && ShowPath)
             {
-                console.Error.WriteLine("Please specify a path.");
-            }
-            else if (Path == null && ShowPath)
-            {
-                console.Output.WriteLine(AppConfiguration.ReadFilePath());
+                try
+                {
+                    console.Output.WriteLine(AppConfiguration.ReadFilePath());
+                }
+                catch (FilePathNotSpecifiedException e)
+                {
+                    console.Error.Write(e);
+                }
             }
             else if (Path != null && ShowPath)
             {

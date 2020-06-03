@@ -1,3 +1,4 @@
+using System;
 using System.Configuration;
 using RealEstateManagementCLI.Configuration;
 
@@ -31,7 +32,14 @@ namespace RealEstateManagementCLI.Configuration
         /// <param name="filePath">The path of the XML file.</param>
         public static void SpecifyPath(string filePath)
         {
-            SetValue("filePath", filePath);
+            if (filePath != null)
+            {
+                SetValue("filePath", filePath);
+            }
+            else
+            {
+                throw new FilePathNotNullException();
+            }
         }
 
         /// <summary>

@@ -1,4 +1,5 @@
 using System;
+using CliFx.Exceptions;
 
 namespace RealEstateManagementCLI.Configuration
 {
@@ -10,9 +11,9 @@ namespace RealEstateManagementCLI.Configuration
         /// <summary>
         /// Constructor.
         /// </summary>
-        public FilePathNotSpecifiedException() : base("The filepath of the XML file is not specified!")
+        public FilePathNotSpecifiedException()
         {
-            // TODO: Test FilePathNotSpecifiedExcpetion -> does it occur at the right places?
+            throw new CliFxException("The filepath of the XML file is not specified!", true);
         }
     }
 }

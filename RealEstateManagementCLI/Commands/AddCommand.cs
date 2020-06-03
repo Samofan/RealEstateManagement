@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CliFx;
 using CliFx.Attributes;
+using CliFx.Exceptions;
 using RealEstateManagementCLI.Configuration;
 using RealEstateManagementLibrary.Models;
 using RealEstateManagementLibrary.Models.RealEstate;
@@ -31,8 +32,7 @@ namespace RealEstateManagementCLI.Commands
             
             if (AddHouse && AddApartment || !AddHouse && !AddApartment)
             {
-                console.Error.WriteLine("Please define whether you want to add a house or apartment with -o or -a.");
-                return default;
+                MakeDecision();
             }
             
             var realEstateManagement = new RealEstateManagementImpl(AppConfiguration.ReadFilePath());
@@ -44,6 +44,31 @@ namespace RealEstateManagementCLI.Commands
             IsRealEstateCorrect(realEstateManagement);
 
             return default;
+        }
+
+        /// <summary>
+        /// Make a decision whether a house or an apartment should be added.
+        /// </summary>
+        private void MakeDecision()
+        {
+            _console.Output.Write("Do you want to add a house (1) or an apartment (2) ? ");
+            var houseOrApartment = _console.Input.ReadLine();
+
+            switch (houseOrApartment)
+            {
+                case "1":
+                    AddHouse = true;
+                    AddApartment = false;
+                    break;
+                case "2":
+                    AddHouse = false;
+                    AddApartment = true;
+                    break;
+                default:
+                    _console.Error.WriteLine("Not possible!");
+                    MakeDecision();
+                    break;
+            }
         }
 
         /// <summary>

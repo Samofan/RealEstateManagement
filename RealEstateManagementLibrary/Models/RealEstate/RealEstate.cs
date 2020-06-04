@@ -125,7 +125,7 @@ namespace RealEstateManagementLibrary.Models.RealEstate
         /// Checks if the RealEstate is for sale.
         /// </summary>
         /// <returns>A string whether it is for sale or for rent.</returns>
-        private string IsForSale()
+        public string IsForSale()
         {
             var returnString = "";
             

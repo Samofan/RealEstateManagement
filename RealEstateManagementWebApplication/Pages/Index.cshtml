@@ -1,0 +1,68 @@
+﻿@page
+@using RealEstateManagementLibrary.Models.RealEstate
+@model IndexModel
+@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    
+    <table class="table">
+        <thead>
+        <td>Type</td>
+        <td>For rent</td>
+        <td>For sale</td>
+        <td>Price</td>
+        <td>Rooms</td>
+        <td>Size</td>
+        <td>Operations</td>
+        </thead>
+        <tbody>
+            @foreach (var realEstate in Model.RealEstates)
+                            {
+                                <tr>
+                                    @if (realEstate.GetType() == typeof(House))
+                                    {
+                                        <td><a asp-area="" asp-page="/Error">House</a></td>
+                                    } 
+                                    else 
+                                    {
+                                        <td><a asp-area="" asp-page="/Error">Apartment</a></td>
+                                    }
+                                    
+                                    @if (realEstate.ForSale)
+                                    {
+                                        <td></td>
+                                        <td>X</td>
+                                        <td>@realEstate.PurchasePrice€</td>
+                                    }
+                                    else
+                                    {
+                                        <td>X</td>
+                                        <td></td>
+                                        <td>@realEstate.RentalPrice€ per month</td>
+                                    }
+                                    <td> @realEstate.AmountOfRooms</td>
+                                    
+                                    @if (realEstate.GetType() == typeof(House))
+                                    {
+                                        var house = (House) @realEstate;
+                                        <td>@realEstate.Size m² (Plot: @house.PlotSize m²)</td>
+                                    }
+                                    else
+                                    {
+                                        <td>@realEstate.Size m²</td>
+                                    }
+                                    <td>
+                                        <!-- TODO: Add icons instead of text -->
+                                        <a asp-area="" asp-page="/Error">Show address</a>
+                                        • <a asp-area="" asp-page="/Error">Remove</a> •
+                                        <a asp-area="" asp-page="/Error">Update</a>
+                                    </td>
+                                    
+                                </tr>
+                            }
+        </tbody>
+    </table>
+</div>

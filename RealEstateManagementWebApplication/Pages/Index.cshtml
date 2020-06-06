@@ -1,68 +1,82 @@
 ﻿@page
 @using RealEstateManagementLibrary.Models.RealEstate
+@using Microsoft.AspNetCore.Components.Web
 @model IndexModel
 @{
     ViewData["Title"] = "Home";
 }
 
+@code
+{
+    
+}
+
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    
+</div>
+
+<div class="text-right" id="index-buttons">
+    <button type="button" class="btn btn-light">Add</button>
+    <button type="button" class="btn btn-light">Reload</button>
+    <button>
+        Update heading
+    </button>
+</div> 
+
+<div class="text-center">
     <table class="table">
-        <thead>
-        <td>Type</td>
-        <td>For rent</td>
-        <td>For sale</td>
-        <td>Price</td>
-        <td>Rooms</td>
-        <td>Size</td>
-        <td>Operations</td>
-        </thead>
-        <tbody>
-            @foreach (var realEstate in Model.RealEstates)
+                    <thead>
+                    <td>Type</td>
+                    <td>For rent</td>
+                    <td>For sale</td>
+                    <td>Price</td>
+                    <td>Rooms</td>
+                    <td>Size</td>
+                    <td>Operations</td>
+                    </thead>
+                    <tbody>
+                    @foreach (var realEstate in Model.RealEstates)
+                    {
+                        <tr>
+                            @if (realEstate.GetType() == typeof(House))
                             {
-                                <tr>
-                                    @if (realEstate.GetType() == typeof(House))
-                                    {
-                                        <td><a asp-area="" asp-page="/Error">House</a></td>
-                                    } 
-                                    else 
-                                    {
-                                        <td><a asp-area="" asp-page="/Error">Apartment</a></td>
-                                    }
-                                    
-                                    @if (realEstate.ForSale)
-                                    {
-                                        <td></td>
-                                        <td>X</td>
-                                        <td>@realEstate.PurchasePrice€</td>
-                                    }
-                                    else
-                                    {
-                                        <td>X</td>
-                                        <td></td>
-                                        <td>@realEstate.RentalPrice€ per month</td>
-                                    }
-                                    <td> @realEstate.AmountOfRooms</td>
-                                    
-                                    @if (realEstate.GetType() == typeof(House))
-                                    {
-                                        var house = (House) @realEstate;
-                                        <td>@realEstate.Size m² (Plot: @house.PlotSize m²)</td>
-                                    }
-                                    else
-                                    {
-                                        <td>@realEstate.Size m²</td>
-                                    }
-                                    <td>
-                                        <!-- TODO: Add icons instead of text -->
-                                        <a asp-area="" asp-page="/Error">Show address</a>
-                                        • <a asp-area="" asp-page="/Error">Remove</a> •
-                                        <a asp-area="" asp-page="/Error">Update</a>
-                                    </td>
-                                    
-                                </tr>
+                                <td><a asp-area="" asp-page="/Error">House</a></td>
+                            } 
+                            else 
+                            {
+                                <td><a asp-area="" asp-page="/Error">Apartment</a></td>
                             }
-        </tbody>
-    </table>
+                                                    
+                            @if (realEstate.ForSale)
+                            {
+                                <td></td>
+                                <td><ion-icon name="checkmark-outline"></ion-icon></td>
+                                <td>@realEstate.PurchasePrice€</td>
+                            }
+                            else
+                            {
+                                <td><ion-icon name="checkmark-outline"></ion-icon></td>
+                                <td></td>
+                                <td>@realEstate.RentalPrice€ per month</td>
+                            }
+                            <td> @realEstate.AmountOfRooms</td>
+                                                    
+                            @if (realEstate.GetType() == typeof(House))
+                            {
+                                var house = (House) @realEstate;
+                                <td>@realEstate.Size m² (Plot: @house.PlotSize m²)</td>
+                            }
+                            else
+                            {
+                                <td>@realEstate.Size m²</td>
+                            }
+                            <td>                               
+                                <a asp-area="" asp-page="/Error"><ion-icon name="navigate-outline"></ion-icon></a>
+                                <a asp-area="" asp-page="/Error"><ion-icon name="trash-outline"></ion-icon></a>
+                                <a asp-area="" asp-page="/Error"><ion-icon name="refresh-outline"></ion-icon></a>
+                            </td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
 </div>

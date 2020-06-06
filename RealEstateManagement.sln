@@ -1,12 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealEstateManagementLibrary", "RealEstateManagementLibrary\RealEstateManagementLibrary.csproj", "{0B0CB0BC-2081-4CC2-AEB4-F243BF257AD4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealEstateManagementCLI", "RealEstateManagementCLI\RealEstateManagementCLI.csproj", "{4039209C-074C-4719-8B98-F57834E25B31}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealEstateManagementUnitTest", "RealEstateManagementUnitTest\RealEstateManagementUnitTest.csproj", "{DF47A8C7-3D8B-4382-B83B-428044888095}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealEstateManagementWebApplication", "RealEstateManagementWebApplication\RealEstateManagementWebApplication.csproj", "{60BFA1BB-F757-4516-BD9D-EA17594F49A6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealEstateManagementWebApplication", "RealEstateManagementWebApplication\RealEstateManagementWebApplication.csproj", "{7B181892-2FAA-4048-968D-68DD5A036667}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,9 +27,9 @@ Global
 		{DF47A8C7-3D8B-4382-B83B-428044888095}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF47A8C7-3D8B-4382-B83B-428044888095}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF47A8C7-3D8B-4382-B83B-428044888095}.Release|Any CPU.Build.0 = Release|Any CPU
-		{60BFA1BB-F757-4516-BD9D-EA17594F49A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{60BFA1BB-F757-4516-BD9D-EA17594F49A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{60BFA1BB-F757-4516-BD9D-EA17594F49A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{60BFA1BB-F757-4516-BD9D-EA17594F49A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B181892-2FAA-4048-968D-68DD5A036667}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B181892-2FAA-4048-968D-68DD5A036667}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B181892-2FAA-4048-968D-68DD5A036667}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B181892-2FAA-4048-968D-68DD5A036667}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
@@ -24,10 +25,19 @@ namespace RealEstateManagementWebApplication.Pages
 
         public void OnGet()
         {
+            LoadList();
+        }
+
+        private void LoadList()
+        {
             var realEstateManagement = new RealEstateManagementImpl(@"");
-            _logger.Log(LogLevel.Debug, "RealEstateImpl instance created");
             RealEstates = realEstateManagement.GetAll().ToList();
-            _logger.Log(LogLevel.Debug, "RealEstate List loaded");
+        }
+
+        public void LoadListAction(MouseEventArgs e)
+        {
+            Console.WriteLine("test");
+            LoadList();
         }
     }
 }

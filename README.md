@@ -26,3 +26,4 @@ is replacing this text after I got my grade.
 
 * [CliFx](https://github.com/Tyrrrz/CliFx)
 * [xUnit](https://github.com/xunit/xunit)
+* [Ionicons](https://ionicons.com)

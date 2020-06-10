@@ -26,7 +26,8 @@ namespace RealEstateManagementCLI.Commands
         public ValueTask ExecuteAsync(IConsole console)
         {
             // Create new instance of RealEstateManagementImpl if filePath is specified in app.config.
-            var realEstateManagement = new RealEstateManagementImpl(AppConfiguration.ReadFilePath(), SerializationType.Xml);
+            var realEstateManagement = new RealEstateManagementImpl(AppConfiguration.ReadFilePath(),
+                AppConfiguration.ReadSerializationType());
 
             var realEstates = realEstateManagement.GetAll();
 

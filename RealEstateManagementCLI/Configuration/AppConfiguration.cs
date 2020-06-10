@@ -1,6 +1,7 @@
 using System;
 using System.Configuration;
 using RealEstateManagementCLI.Configuration;
+using RealEstateManagementLibrary.Utils.Management;
 
 namespace RealEstateManagementCLI.Configuration
 {
@@ -40,6 +41,34 @@ namespace RealEstateManagementCLI.Configuration
             {
                 throw new FilePathNotNullException();
             }
+        }
+
+        /// <summary>
+        /// Reads the <see cref="SerializationType"/> of the application.
+        /// </summary>
+        /// <returns>The <see cref="SerializationType"/> that is configured in the app.config.</returns>
+        /// <exception cref="FilePathNotSpecifiedException"></exception>
+        public static SerializationType ReadSerializationType()
+        {
+            var result = ReadValue("serializationType");
+
+            if (result.Equals(""))
+            {
+                // TODO: Create new Exception.
+                throw new FilePathNotSpecifiedException();
+            }
+
+            return Enum.Parse<SerializationType>(result);
+        }
+
+        /// <summary>
+        /// Specifies the <see cref="SerializationType"/> in the app.config.
+        /// </summary>
+        /// <param name="serializationType"></param>
+        public static void SpecifySerializationType(SerializationType serializationType)
+        {
+            // TODO: Add exception.
+            SetValue("serializationType", serializationType.ToString());
         }
 
         /// <summary>

@@ -1,11 +1,6 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Net;
-using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 using RealEstateManagementLibrary.Models.RealEstate;
@@ -118,6 +113,9 @@ namespace RealEstateManagementLibrary.Utils.Management
             }
         }
 
+        /// <summary>
+        /// Save the real estate list in a xml file.
+        /// </summary>
         private void SaveXml()
         {
             var serializer = new XmlSerializer(typeof(List<RealEstate>));
@@ -129,6 +127,9 @@ namespace RealEstateManagementLibrary.Utils.Management
             textWriter.Close();
         }
 
+        /// <summary>
+        /// Save the real estate list in a xml file.
+        /// </summary>
         private void SaveBinary()
         { 
             var fileStream = new FileStream(_filePath, FileMode.OpenOrCreate);
@@ -140,6 +141,10 @@ namespace RealEstateManagementLibrary.Utils.Management
             fileStream.Close();
         }
 
+        /// <summary>
+        /// Load the content of a xml file and create the real estate list. 
+        /// </summary>
+        /// <returns>A list of real estates.</returns>
         private List<RealEstate> LoadXml()
         {
             var deserializer = new XmlSerializer(typeof(List<RealEstate>));
@@ -160,14 +165,25 @@ namespace RealEstateManagementLibrary.Utils.Management
             return realEstates;
         }
 
+        /// <summary>
+        /// Load the content of a binary file and create the real estate list.
+        /// </summary>
+        /// <returns>A list of real estates.</returns>
         private List<RealEstate> LoadBinary()
         {
-            var fileStream = new FileStream(_filePath, FileMode.Open);
+            var fileStream = new FileStream(_filePath, FileMode.OpenOrCreate);
+            var realEstates = new List<RealEstate>();
             
-            var binaryFormatter = new BinaryFormatter();
+            if (fileStream.Length != 0)
+            {
+                var binaryFormatter = new BinaryFormatter();
+                realEstates = (List<RealEstate>) binaryFormatter.Deserialize(fileStream);
+            }
+            else
+            {
+                realEstates = new List<RealEstate>();
+            }
 
-            var realEstates = (List<RealEstate>) binaryFormatter.Deserialize(fileStream);
-            
             fileStream.Close();
 
             return realEstates;

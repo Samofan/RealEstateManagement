@@ -177,6 +177,9 @@ namespace RealEstateManagementUnitTest
             Assert.Equal(realEstates[0].ToString(), TestHouse.ToString());
         }
 
+        /// <summary>
+        /// Tests if serializing of the objects in the real estate list works.
+        /// </summary>
         [Fact]
         private void TestSerializeToBinary()
         {
@@ -188,6 +191,9 @@ namespace RealEstateManagementUnitTest
             realEstateManagement.Save();
         }
 
+        /// <summary>
+        /// Check if the deserialization of an object from the XML file works.
+        /// </summary>
         [Fact]
         private void TestDeserializeFromBinary()
         {

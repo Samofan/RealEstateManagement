@@ -81,7 +81,7 @@ namespace RealEstateManagementUnitTest
         [Fact]
         private void TestRealEstateManagement()
         {
-            var realEstateManagement = new RealEstateManagementImpl(true);
+            var realEstateManagement = new RealEstateManagementImpl(true, "test.xml", SerializationType.Xml);
 
             #region Add
 
@@ -152,7 +152,7 @@ namespace RealEstateManagementUnitTest
         [Fact]
         private void TestSerializeToXml()
         {
-            var realEstateManagement = new RealEstateManagementImpl(true);
+            var realEstateManagement = new RealEstateManagementImpl(true, "test.xml", SerializationType.Xml);
             
             realEstateManagement.Add(TestApartment);
             realEstateManagement.Add(TestHouse);
@@ -166,7 +166,32 @@ namespace RealEstateManagementUnitTest
         [Fact]
         private void TestDeserializeFromXml()
         {
-            var realEstateManagement = new RealEstateManagementImpl(true);
+            var realEstateManagement = new RealEstateManagementImpl(true, "test.xml", SerializationType.Xml);
+            
+            realEstateManagement.Add(TestHouse);
+            
+            realEstateManagement.Save();
+
+            var realEstates = realEstateManagement.Load();
+            
+            Assert.Equal(realEstates[0].ToString(), TestHouse.ToString());
+        }
+
+        [Fact]
+        private void TestSerializeToBinary()
+        {
+            var realEstateManagement = new RealEstateManagementImpl(true, "test.dat", SerializationType.Binary);
+            
+            realEstateManagement.Add(TestApartment);
+            realEstateManagement.Add(TestHouse);
+            
+            realEstateManagement.Save();
+        }
+
+        [Fact]
+        private void TestDeserializeFromBinary()
+        {
+            var realEstateManagement = new RealEstateManagementImpl(true, "test.dat", SerializationType.Binary);
             
             realEstateManagement.Add(TestHouse);
             

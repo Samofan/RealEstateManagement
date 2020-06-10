@@ -22,7 +22,7 @@ namespace RealEstateManagementCLI.Commands
         {
             _console = console;
 
-            var realEstateManagement = new RealEstateManagementImpl(AppConfiguration.ReadFilePath());
+            var realEstateManagement = new RealEstateManagementImpl(AppConfiguration.ReadFilePath(), SerializationType.Xml);
 
             if (Confirmation(realEstateManagement.GetAll().ToList()))
             {

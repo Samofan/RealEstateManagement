@@ -35,7 +35,7 @@ namespace RealEstateManagementCLI.Commands
                 MakeDecision();
             }
             
-            var realEstateManagement = new RealEstateManagementImpl(AppConfiguration.ReadFilePath());
+            var realEstateManagement = new RealEstateManagementImpl(AppConfiguration.ReadFilePath(), SerializationType.Xml);
 
             var realEstate = CreateRealEstate();
 

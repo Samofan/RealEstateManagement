@@ -1,3 +1,5 @@
+using System;
+using System.Runtime.Serialization;
 using RealEstateManagementLibrary.Models.RealEstate;
 
 namespace RealEstateManagementLibrary.Models
@@ -5,7 +7,8 @@ namespace RealEstateManagementLibrary.Models
     /// <summary>
     /// Represents an address of a <see cref="RealEstate"/>.
     /// </summary>
-    public class Address
+    [Serializable]
+    public class Address : ISerializable
     {
         /// <summary>
         /// The street.
@@ -64,6 +67,14 @@ namespace RealEstateManagementLibrary.Models
         }
 
         /// <summary>
+        /// Empty constructor.
+        /// </summary>
+        public Address()
+        {
+            
+        }
+
+        /// <summary>
         /// ToString method of Address.
         /// </summary>
         /// <returns>An Address human friendly.</returns>
@@ -74,5 +85,25 @@ namespace RealEstateManagementLibrary.Models
                 + "\nZip code: " + _zipCode
                 + "\nCity: " + _city;
         }
+
+        #region Serialization
+
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            info.AddValue("Street", _street);
+            info.AddValue("HouseNumber", _houseNumber);
+            info.AddValue("ZipCode", _zipCode);
+            info.AddValue("City", _city);
+        }
+
+        public Address(SerializationInfo info, StreamingContext context)
+        {
+            Street = info.GetString("Street");
+            HouseNumber = info.GetString("HouseNumber");
+            ZipCode = info.GetString("ZipCode");
+            City = info.GetString("City");
+        }
+
+        #endregion
     }
 }

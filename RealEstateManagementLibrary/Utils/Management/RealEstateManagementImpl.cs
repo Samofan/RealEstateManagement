@@ -28,6 +28,8 @@ namespace RealEstateManagementLibrary.Utils.Management
         /// Default constructor that loads all objects from the specified XML file into
         /// the _realEstates list.
         /// </summary>
+        /// <param name="filePath">The filepath of the file that stores the real estates.</param>
+        /// <param name="serializationType">The <see cref="SerializationType"/>.</param>
         public RealEstateManagementImpl(string filePath, SerializationType serializationType)
         {
             _filePath = filePath;
@@ -40,21 +42,14 @@ namespace RealEstateManagementLibrary.Utils.Management
         /// is needed for that. The behaviour of the default constructor is used if the testing flag is false.
         /// </summary>
         /// <param name="testing">Defines whether the unit test should run.</param>
-        /// <param name="filePath"></param>
-        /// <param name="serializationType"></param>
+        /// <param name="filePath">The filepath of the file that stores the real estates.</param>
+        /// <param name="serializationType">The <see cref="SerializationType"/>.</param>
         public RealEstateManagementImpl(bool testing, string filePath, SerializationType serializationType)
         {
             _serializationType = serializationType;
+            _filePath = filePath;
             
-            if (testing)
-            {
-                _realEstates = new List<RealEstate>();
-                _filePath = filePath;
-            }
-            else
-            {
-                _realEstates = Load();
-            }
+            _realEstates = testing ? new List<RealEstate>() : Load();
         }
         
         public void Add(RealEstate realEstate)
@@ -172,7 +167,7 @@ namespace RealEstateManagementLibrary.Utils.Management
         private List<RealEstate> LoadBinary()
         {
             var fileStream = new FileStream(_filePath, FileMode.OpenOrCreate);
-            var realEstates = new List<RealEstate>();
+            List<RealEstate> realEstates;
             
             if (fileStream.Length != 0)
             {

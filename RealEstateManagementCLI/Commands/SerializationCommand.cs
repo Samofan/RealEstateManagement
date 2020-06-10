@@ -35,19 +35,9 @@ namespace RealEstateManagementCLI.Commands
                 AppConfiguration.SpecifySerializationType(Enum.Parse<SerializationType>(Type));
                 console.Output.WriteLine(AppConfiguration.ReadSerializationType().ToString());
             }
-            else
+            else if (Type != null)
             {
-                try
-                {
-                    var serializationType = Enum.Parse<SerializationType>(Type);
-                    AppConfiguration.SpecifySerializationType(serializationType);
-                }
-                catch (Exception e)
-                {
-                    // TODO: Catch exception
-                    console.Error.WriteLine("Not possible!" + e.Message);
-                }
-                
+                AppConfiguration.SpecifySerializationType(Enum.Parse<SerializationType>(Type));
             }
 
             return default;

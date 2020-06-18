@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using CliFx;
 using CliFx.Attributes;
+using CliFx.Exceptions;
 using RealEstateManagementCLI.Configuration;
 using RealEstateManagementLibrary.Utils.Management;
 
@@ -18,26 +19,22 @@ namespace RealEstateManagementCLI.Commands
         
         public ValueTask ExecuteAsync(IConsole console)
         {
-            if (Type == null && ShowType)
+            if (ShowType)
             {
-                try
-                {
-                    console.Output.WriteLine(AppConfiguration.ReadSerializationType().ToString());
-                }
-                catch (FilePathNotSpecifiedException e)
-                {
-                    // TODO: Change exception.
-                    console.Error.Write(e);
-                }
+                console.Output.WriteLine(AppConfiguration.ReadSerializationType().ToString());               
             }
-            else if (Type != null && ShowType)
+
+            if (Type == null) return default;
+            
+            if (Type == SerializationType.Binary.ToString() || Type == SerializationType.Xml.ToString())
             {
                 AppConfiguration.SpecifySerializationType(Enum.Parse<SerializationType>(Type));
-                console.Output.WriteLine(AppConfiguration.ReadSerializationType().ToString());
+                console.Output.WriteLine("Serialization type changed. Please make sure to change the file extension!");
             }
-            else if (Type != null)
+            else
             {
-                AppConfiguration.SpecifySerializationType(Enum.Parse<SerializationType>(Type));
+                throw new CliFxException("Serialization type not known! Known types are " + 
+                                         SerializationType.Xml + " or " + SerializationType.Binary);
             }
 
             return default;

@@ -44,6 +44,7 @@ namespace RealEstateManagementUnitTest
             RentalPrice = 389,
             Address = TestAddress,
             Size = 45,
+            Story = 3,
             AmountOfRooms = 2
         };
 
@@ -68,7 +69,7 @@ namespace RealEstateManagementUnitTest
         private void ApartmentToString()
         {
             const string expectedStringApartment =
-                "[APARTMENT]\nFor rent: true\nRental price: 389\nStreet: Sandstraße\nHouse number: 112\nZip code: 57072" +
+                "[APARTMENT]\nStory: 3\nFor rent: true\nRental price: 389\nStreet: Sandstraße\nHouse number: 112\nZip code: 57072" +
                 "\nCity: Siegen\nSize: 45\nAmount of rooms: 2\n";
             var apartmentToString = TestApartment.ToString();
 

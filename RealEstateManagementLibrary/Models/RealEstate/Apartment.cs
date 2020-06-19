@@ -10,8 +10,20 @@ namespace RealEstateManagementLibrary.Models.RealEstate
     [Serializable]
     public class Apartment : RealEstate, ISerializable
     {
-        // TODO: _story
-        
+        /// <summary>
+        /// The story the apartment is in.
+        /// </summary>
+        private int _story;
+
+        /// <summary>
+        /// The property for _story.
+        /// </summary>
+        public int Story
+        {
+            get => _story;
+            set => _story = value;
+        }
+
         /// <summary>
         /// Empty constructor.
         /// </summary>
@@ -26,7 +38,7 @@ namespace RealEstateManagementLibrary.Models.RealEstate
         /// <returns>An apartment human friendly.</returns>
         public override string ToString()
         {
-            return "[APARTMENT]" + base.ToString() + "\n";
+            return "[APARTMENT]\nStory: " + Story  + base.ToString() + "\n";
         }
 
         #region Serialization
@@ -38,6 +50,7 @@ namespace RealEstateManagementLibrary.Models.RealEstate
             info.AddValue("ForRent", ForRent);
             info.AddValue("RentalPrice", RentalPrice);
             info.AddValue("Address", Address);
+            info.AddValue("Story", Story);
             info.AddValue("Size", Size);
             info.AddValue("AmountOfRooms", AmountOfRooms);
         }
@@ -49,6 +62,7 @@ namespace RealEstateManagementLibrary.Models.RealEstate
             ForRent = info.GetBoolean("ForRent");
             RentalPrice = info.GetDouble("RentalPrice");
             Address = (Address)info.GetValue("Address", typeof(Address));
+            Story = info.GetInt32("Story");
             Size = info.GetInt32("Size");
             AmountOfRooms = info.GetInt32("AmountOfRooms");
         }

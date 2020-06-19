@@ -206,6 +206,9 @@ namespace RealEstateManagementCLI.Commands
 
             apartment.Address = DefineAddress();
             
+            _console.Output.Write("Story: ");
+            apartment.Story = Convert.ToInt32(_console.Input.ReadLine());
+            
             _console.Output.Write("Size: ");
             apartment.Size = Convert.ToInt32(_console.Input.ReadLine());
             

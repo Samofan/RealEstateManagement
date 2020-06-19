@@ -74,6 +74,10 @@ namespace RealEstateManagementCLI.Commands
 
             var apartment = (Apartment) CheckForSaleOrRent(realEstate);
             
+            _console.Output.Write("Story: " + apartment.Story + " ");
+
+            var story = _console.Input.ReadLine();
+            
             _console.Output.Write("Size: " + apartment.Size + " ");
 
             var size = _console.Input.ReadLine();
@@ -81,6 +85,8 @@ namespace RealEstateManagementCLI.Commands
             _console.Output.Write("Amount of rooms: " + apartment.AmountOfRooms + " ");
 
             var amountOfRooms = _console.Input.ReadLine();
+
+            apartment.Story = story != "" ? Convert.ToInt32(story) : apartment.Story;
 
             apartment.Size = size != "" ? Convert.ToInt32(size) : apartment.Size;
 

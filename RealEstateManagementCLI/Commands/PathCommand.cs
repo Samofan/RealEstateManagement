@@ -6,7 +6,7 @@ using RealEstateManagementCLI.Configuration;
 
 namespace RealEstateManagementCLI.Commands
 {
-    [Command("path", Description = "Specify the path of the XML file.")]
+    [Command("path", Description = "Specify the path of the file.")]
     public class PathCommand : ICommand
     {
         [CommandOption("set", 'p', Description = "Set the path.")]

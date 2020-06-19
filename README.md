@@ -22,13 +22,17 @@ Options
 Commands
   add               Add a new real estate.
   list              List available real estates.
-  path              Specify the path of the XML file.
+  path              Specify the path of the file.
   remove            Remove a real estate.
   serialization     Specify the serialization type. (Xml is standard).
   update            Update an existing real estate.
 
 You can run `dotnet RealEstateManagementCLI.dll [command] --help` to show help on a specific command.
 ```
+
+### Warning
+
+Make sure to change the file extension (\*.dat or \*.xml) if you change the type of serialization with the path command.
 
 # Contribute
 

@@ -11,11 +11,24 @@ A software to manage real estates.
 
 ## Command line interface
 
-// TODO
+```
+Usage
+  dotnet RealEstateManagementCLI.dll [command]
 
-## GUI (maybe coming soon)
+Options
+  -h|--help         Shows help text.
+  --version         Shows version information.
 
-// TODO
+Commands
+  add               Add a new real estate.
+  list              List available real estates.
+  path              Specify the path of the XML file.
+  remove            Remove a real estate.
+  serialization     Specify the serialization type. (Xml is standard).
+  update            Update an existing real estate.
+
+You can run `dotnet RealEstateManagementCLI.dll [command] --help` to show help on a specific command.
+```
 
 # Contribute
 

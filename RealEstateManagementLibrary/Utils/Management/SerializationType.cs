@@ -12,6 +12,7 @@ namespace RealEstateManagementLibrary.Utils.Management
         /// <summary>
         /// Binary serialization.
         /// </summary>
-        Binary
+        Binary,
+        Json
     }
 }

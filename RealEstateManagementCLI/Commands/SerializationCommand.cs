@@ -26,7 +26,8 @@ namespace RealEstateManagementCLI.Commands
 
             if (Type == null) return default;
             
-            if (Type == SerializationType.Binary.ToString() || Type == SerializationType.Xml.ToString())
+            if (Type == SerializationType.Binary.ToString() || Type == SerializationType.Xml.ToString() || 
+                Type == SerializationType.Json.ToString())
             {
                 AppConfiguration.SpecifySerializationType(Enum.Parse<SerializationType>(Type));
                 console.Output.WriteLine("Serialization type changed. Please make sure to change the file extension!");
@@ -34,7 +35,8 @@ namespace RealEstateManagementCLI.Commands
             else
             {
                 throw new CliFxException("Serialization type not known! Known types are " + 
-                                         SerializationType.Xml + " or " + SerializationType.Binary);
+                                         SerializationType.Xml + ", " + SerializationType.Binary + " or " + 
+                                         SerializationType.Json);
             }
 
             return default;

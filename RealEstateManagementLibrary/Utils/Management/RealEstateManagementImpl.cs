@@ -1,8 +1,11 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Xml.Linq;
 using System.Xml.Serialization;
+using Newtonsoft.Json;
+using RealEstateManagementLibrary.Models;
 using RealEstateManagementLibrary.Models.RealEstate;
 
 namespace RealEstateManagementLibrary.Utils.Management
@@ -92,6 +95,9 @@ namespace RealEstateManagementLibrary.Utils.Management
                 case SerializationType.Binary:
                     SaveBinary();
                     break;
+                case SerializationType.Json:
+                    SaveJson();
+                    break;
             }
         }
 
@@ -103,6 +109,8 @@ namespace RealEstateManagementLibrary.Utils.Management
                     return LoadXml();
                 case SerializationType.Binary:
                     return LoadBinary();
+                case SerializationType.Json:
+                    return LoadJson();
                 default:
                     return new List<RealEstate>();
             }
@@ -134,6 +142,15 @@ namespace RealEstateManagementLibrary.Utils.Management
             binaryFormatter.Serialize(fileStream, _realEstates);
             
             fileStream.Close();
+        }
+
+        private void SaveJson()
+        {
+            var jsonSerializer = new JsonSerializer();
+
+            var streamWriter = File.AppendText(_filePath);
+            
+            jsonSerializer.Serialize(streamWriter, _realEstates);
         }
 
         /// <summary>
@@ -182,6 +199,54 @@ namespace RealEstateManagementLibrary.Utils.Management
             fileStream.Close();
 
             return realEstates;
+        }
+
+        private List<RealEstate> LoadJson()
+        {
+            Address TestAddress = new Address
+            {
+                Street = "Sandstraße",
+                HouseNumber = "112",
+                City = "Siegen",
+                ZipCode = "57072"
+            };
+            
+            House TestHouse = new House
+            {
+                ForSale = true,
+                PurchasePrice = 250000.0,
+                Address = TestAddress,
+                Size = 180,
+                PlotSize = 300,
+                AmountOfRooms = 6
+            };
+            
+            
+            _realEstates.Add(TestHouse);
+            
+            SaveJson();
+
+            return null;
+
+            /*StreamReader streamReader;
+
+            try
+            {
+                streamReader = File.OpenText(_filePath);
+            }
+            catch (FileNotFoundException)
+            {
+                File.Create(_filePath);
+                streamReader = File.OpenText(_filePath);
+            }
+
+            TextReader textReader = streamReader;
+
+            var realEstates = JsonConvert.DeserializeObject<List<RealEstate>>(textReader.ReadToEnd());
+
+            streamReader.Close();
+
+            return realEstates;*/
         }
     }
 }

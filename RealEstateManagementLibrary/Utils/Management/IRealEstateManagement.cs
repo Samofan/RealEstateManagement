@@ -27,6 +27,11 @@ namespace RealEstateManagementLibrary.Utils.Management
         void Remove(int index);
 
         /// <summary>
+        /// Remove all real estates from the list.
+        /// </summary>
+        void RemoveAll();
+
+        /// <summary>
         /// Update a <see cref="RealEstate"/>.
         /// </summary>
         /// <param name="index">The index of the element we want to update.</param>

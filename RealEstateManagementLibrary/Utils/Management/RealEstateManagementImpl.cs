@@ -37,21 +37,6 @@ namespace RealEstateManagementLibrary.Utils.Management
             _realEstates = Load();
         }
 
-        /// <summary>
-        /// Constructor that is used for testing the methods in this class. An empty _realEstates list
-        /// is needed for that. The behaviour of the default constructor is used if the testing flag is false.
-        /// </summary>
-        /// <param name="testing">Defines whether the unit test should run.</param>
-        /// <param name="filePath">The filepath of the file that stores the real estates.</param>
-        /// <param name="serializationType">The <see cref="SerializationType"/>.</param>
-        public RealEstateManagementImpl(bool testing, string filePath, SerializationType serializationType)
-        {
-            _serializationType = serializationType;
-            _filePath = filePath;
-            
-            _realEstates = testing ? new List<RealEstate>() : Load();
-        }
-        
         public void Add(RealEstate realEstate)
         {
             _realEstates.Add(realEstate);
@@ -65,6 +50,11 @@ namespace RealEstateManagementLibrary.Utils.Management
         public void Remove(int index)
         {
             _realEstates.RemoveAt(index);
+        }
+
+        public void RemoveAll()
+        {
+            _realEstates.Clear();
         }
 
         public void Update(int index, RealEstate realEstate)

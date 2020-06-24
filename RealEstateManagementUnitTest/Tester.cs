@@ -77,14 +77,91 @@ namespace RealEstateManagementUnitTest
         }
 
         /// <summary>
-        /// This fact tests all methods in <see cref="RealEstateManagementImpl"/>.
+        /// This fact tests all methods in <see cref="RealEstateManagementImpl"/> with Xml serialization.
         /// </summary>
         [Fact]
-        private void TestRealEstateManagement()
+        private void TestRealEstateManagementXml()
         {
-            var realEstateManagement = new RealEstateManagementImpl(true, "test.xml", SerializationType.Xml);
+            var realEstateManagement = new RealEstateManagementImpl("test.xml", SerializationType.Xml);
 
             #region Add
+            
+            // Clear the list.
+            realEstateManagement.RemoveAll();
+
+            // Make sure that the list is empty.
+            Assert.Throws<ArgumentOutOfRangeException>(
+                ()=> realEstateManagement.Get(0)
+            );
+            
+            // Add an element.
+            realEstateManagement.Add(TestHouse);
+            
+            // Make sure that the added element equals the first element in the list.
+            Assert.Equal(TestHouse, realEstateManagement.Get(0));
+            
+            #endregion
+
+            #region Update
+
+            // Create a new House object that we use to update the TestHouse that we added to the list before.
+            var localTestHouse = new House
+            {
+                ForSale = true,
+                PurchasePrice = 1.0,
+                Address = TestAddress,
+                Size = 1,
+                PlotSize = 1,
+                AmountOfRooms = 1
+            };
+            
+            realEstateManagement.Update(0, localTestHouse);
+            
+            // Make sure that the first element in the list is not equal to TestHouse that was added before. 
+            // (If they are not equal -> Update() method works!)
+            Assert.NotEqual(realEstateManagement.Get(0), TestHouse);
+
+            #endregion
+
+            #region Remove(RealEstate)
+
+            // Test the Remove(RealEstate realEstate) method. Remove the localTestHouse that was created before.
+            realEstateManagement.Remove(localTestHouse);
+            
+            // Make sure that the list is empty.
+            Assert.Throws<ArgumentOutOfRangeException>(
+                ()=> realEstateManagement.Get(0)
+            );
+
+            #endregion
+
+            #region Remove(index)
+
+            // Add the localTestHouse again.
+            realEstateManagement.Add(localTestHouse);
+
+            realEstateManagement.Remove(0);
+            
+            // Make sure that the list is empty.
+            Assert.Throws<ArgumentOutOfRangeException>(
+                ()=> realEstateManagement.Get(0)
+            );
+
+            #endregion
+        }
+        
+        /// <summary>
+        /// This fact tests all methods in <see cref="RealEstateManagementImpl"/> with binary serialization.
+        /// </summary>
+        [Fact]
+        private void TestRealEstateManagementBinary()
+        {
+            var realEstateManagement = new RealEstateManagementImpl("test.dat", SerializationType.Binary);
+
+            #region Add
+            
+            // Clear the list.
+            realEstateManagement.RemoveAll();
 
             // Make sure that the list is empty.
             Assert.Throws<ArgumentOutOfRangeException>(
@@ -153,7 +230,7 @@ namespace RealEstateManagementUnitTest
         [Fact]
         private void TestSerializeToXml()
         {
-            var realEstateManagement = new RealEstateManagementImpl(true, "test.xml", SerializationType.Xml);
+            var realEstateManagement = new RealEstateManagementImpl("test.xml", SerializationType.Xml);
             
             realEstateManagement.Add(TestApartment);
             realEstateManagement.Add(TestHouse);
@@ -167,7 +244,7 @@ namespace RealEstateManagementUnitTest
         [Fact]
         private void TestDeserializeFromXml()
         {
-            var realEstateManagement = new RealEstateManagementImpl(true, "test.xml", SerializationType.Xml);
+            var realEstateManagement = new RealEstateManagementImpl("test.xml", SerializationType.Xml);
             
             realEstateManagement.Add(TestHouse);
             
@@ -184,7 +261,7 @@ namespace RealEstateManagementUnitTest
         [Fact]
         private void TestSerializeToBinary()
         {
-            var realEstateManagement = new RealEstateManagementImpl(true, "test.dat", SerializationType.Binary);
+            var realEstateManagement = new RealEstateManagementImpl("test.dat", SerializationType.Binary);
             
             realEstateManagement.Add(TestApartment);
             realEstateManagement.Add(TestHouse);
@@ -198,8 +275,11 @@ namespace RealEstateManagementUnitTest
         [Fact]
         private void TestDeserializeFromBinary()
         {
-            var realEstateManagement = new RealEstateManagementImpl(true, "test.dat", SerializationType.Binary);
+            var realEstateManagement = new RealEstateManagementImpl("test.dat", SerializationType.Binary);
             
+            // Clear the list.
+            realEstateManagement.RemoveAll();
+
             realEstateManagement.Add(TestHouse);
             
             realEstateManagement.Save();

@@ -56,6 +56,9 @@ namespace RealEstateManagementUnitTest.Utils.Management
         private readonly IRealEstateManagement _realEstateManagementBinary = new RealEstateManagementImpl("test.dat", 
             SerializationType.Binary);
 
+        /// <summary>
+        /// Test the serialization of objects into an xml file.
+        /// </summary>
         [Fact]
         private void XmlSerialization()
         {
@@ -75,6 +78,9 @@ namespace RealEstateManagementUnitTest.Utils.Management
             Assert.Equal(realEstates[1].ToString(), TestHouse.ToString());
         }
 
+        /// <summary>
+        /// Test the serialization of objects into a binary file.
+        /// </summary>
         [Fact]
         private void BinarySerialization()
         {

@@ -51,6 +51,9 @@ namespace RealEstateManagementUnitTest.Utils.Management
         private readonly IRealEstateManagement _realEstateManagement = new RealEstateManagementImpl("test.xml", 
             SerializationType.Xml);
 
+        /// <summary>
+        /// Test to add a <see cref="RealEstate"/>.
+        /// </summary>
         [Fact]
         private void AddRealEstateToList()
         {
@@ -64,6 +67,9 @@ namespace RealEstateManagementUnitTest.Utils.Management
             Assert.Equal(TestApartment, _realEstateManagement.Get(0));
         }
 
+        /// <summary>
+        /// Remove all items from the list without saving.
+        /// </summary>
         [Fact]
         private void RemoveAllItems()
         {
@@ -77,6 +83,9 @@ namespace RealEstateManagementUnitTest.Utils.Management
             );
         }
 
+        /// <summary>
+        /// Remove an item at an index.
+        /// </summary>
         [Fact]
         private void RemoveItemAtIndex()
         {
@@ -89,6 +98,9 @@ namespace RealEstateManagementUnitTest.Utils.Management
             );
         }
 
+        /// <summary>
+        /// Remove an object from the list.
+        /// </summary>
         [Fact]
         private void RemoveObject()
         {
@@ -101,6 +113,9 @@ namespace RealEstateManagementUnitTest.Utils.Management
             );
         }
 
+        /// <summary>
+        /// Update an item. 
+        /// </summary>
         [Fact]
         private void UpdateItem()
         {

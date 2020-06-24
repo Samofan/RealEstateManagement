@@ -146,6 +146,8 @@ namespace RealEstateManagementLibrary.Utils.Management
 
             List<RealEstate> realEstates;
             
+            // TODO: Improve file creation and adding a root element.
+            
             try
             {
                 realEstates = (List<RealEstate>) deserializer.Deserialize(textReader);

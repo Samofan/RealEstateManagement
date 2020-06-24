@@ -1,11 +1,8 @@
 using System;
-using System.Collections.Generic;
 using RealEstateManagementLibrary.Models;
 using RealEstateManagementLibrary.Models.RealEstate;
 using RealEstateManagementLibrary.Utils.Management;
 using Xunit;
-using Xunit.Abstractions;
-using Xunit.Sdk;
 
 namespace RealEstateManagementUnitTest
 {
@@ -245,6 +242,8 @@ namespace RealEstateManagementUnitTest
         private void TestDeserializeFromXml()
         {
             var realEstateManagement = new RealEstateManagementImpl("test.xml", SerializationType.Xml);
+            
+            realEstateManagement.RemoveAll();
             
             realEstateManagement.Add(TestHouse);
             

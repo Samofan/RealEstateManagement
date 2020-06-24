@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -142,8 +143,20 @@ namespace RealEstateManagementLibrary.Utils.Management
             }
             
             TextReader textReader = new StreamReader(_filePath);
+
+            List<RealEstate> realEstates;
             
-            var realEstates = (List<RealEstate>) deserializer.Deserialize(textReader);
+            try
+            {
+                realEstates = (List<RealEstate>) deserializer.Deserialize(textReader);
+            }
+            catch (InvalidOperationException e)
+            {
+                var xDocument = new XDocument( new XElement("ArrayOfRealEstate"));
+                xDocument.Save(_filePath);
+                
+                realEstates = (List<RealEstate>) deserializer.Deserialize(textReader);
+            }
             
             textReader.Close();
 

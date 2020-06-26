@@ -152,7 +152,7 @@ namespace RealEstateManagementLibrary.Utils.Management
             {
                 realEstates = (List<RealEstate>) deserializer.Deserialize(textReader);
             }
-            catch (InvalidOperationException e)
+            catch (InvalidOperationException)
             {
                 var xDocument = new XDocument( new XElement("ArrayOfRealEstate"));
                 xDocument.Save(_filePath);

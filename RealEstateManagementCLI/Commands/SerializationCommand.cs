@@ -29,6 +29,7 @@ namespace RealEstateManagementCLI.Commands
             if (Type == SerializationType.Binary.ToString() || Type == SerializationType.Xml.ToString())
             {
                 AppConfiguration.SpecifySerializationType(Enum.Parse<SerializationType>(Type));
+                // TODO: Change file extension by changing serialization type.
                 console.Output.WriteLine("Serialization type changed. Please make sure to change the file extension!");
             }
             else

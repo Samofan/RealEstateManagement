@@ -17,6 +17,7 @@ namespace RealEstateManagementCLI.Commands
         
         public ValueTask ExecuteAsync(IConsole console)
         {
+            // TODO: Append file extensions according to serialization type when no extensions is at the end of the string.
             if (Path == null && ShowPath)
             {
                 try

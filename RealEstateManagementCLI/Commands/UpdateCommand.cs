@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CliFx;
 using CliFx.Attributes;
+using CliFx.Exceptions;
 using RealEstateManagementCLI.Configuration;
 using RealEstateManagementLibrary.Models;
 using RealEstateManagementLibrary.Models.RealEstate;
@@ -253,8 +254,15 @@ namespace RealEstateManagementCLI.Commands
         /// <returns>True if the user wants to update the <see cref="RealEstate"/>.</returns>
         private bool Confirmation(List<RealEstate> realEstates)
         {
-            _console.Output.Write(realEstates[Index - 1] + "\nDo you really want to update this item? (y/n): ");
-
+            try
+            {
+                _console.Output.Write(realEstates[Index - 1] + "\nDo you really want to update this item? (y/n): ");
+            }
+            catch (ArgumentOutOfRangeException e)
+            {
+                throw new CliFxException("Not possible!");
+            }
+            
             var decision = _console.Input.ReadLine();
             
             switch (decision)

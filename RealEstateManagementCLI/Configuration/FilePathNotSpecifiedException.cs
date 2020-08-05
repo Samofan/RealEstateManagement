@@ -13,7 +13,7 @@ namespace RealEstateManagementCLI.Configuration
         /// </summary>
         public FilePathNotSpecifiedException()
         {
-            throw new CliFxException("The filepath of the XML file is not specified!", true);
+            throw new CliFxException("The filepath of the XML file is not specified!");
         }
     }
 }

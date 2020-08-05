@@ -14,7 +14,7 @@ namespace RealEstateManagementCLI.Configuration
         /// </summary>
         public FilePathNotNullException()
         {
-            throw new CliFxException("Please specify a path.", true);
+            throw new CliFxException("Please specify a path.");
         }
     }
 }

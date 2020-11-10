@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealEstateManagementCLI", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealEstateManagementUnitTest", "RealEstateManagementUnitTest\RealEstateManagementUnitTest.csproj", "{DF47A8C7-3D8B-4382-B83B-428044888095}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealEstateManagementGui", "RealEstateManagementGui\RealEstateManagementGui.csproj", "{4F6830F2-9227-4716-8B1D-E5176DA658A4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{DF47A8C7-3D8B-4382-B83B-428044888095}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF47A8C7-3D8B-4382-B83B-428044888095}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF47A8C7-3D8B-4382-B83B-428044888095}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F6830F2-9227-4716-8B1D-E5176DA658A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F6830F2-9227-4716-8B1D-E5176DA658A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F6830F2-9227-4716-8B1D-E5176DA658A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F6830F2-9227-4716-8B1D-E5176DA658A4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

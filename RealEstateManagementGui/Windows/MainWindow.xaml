@@ -1,0 +1,112 @@
+﻿<Window x:Class="RealEstateManagementGui.Windows.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RealEstateManagementGui.Resources.i18n"
+        mc:Ignorable="d"
+        Title="Real estate management" Height="450" Width="800">
+    <!-- TODO: Set the LanguageBundles to public in VisualStudio -->
+    <!-- Outer grid -->
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <!-- Grid with filter abilities -->
+        <Grid Grid.Row="0" 
+              Grid.Column="0"
+              x:Name="FilterGrid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" 
+                   Grid.Column="0">Filter</Label>
+            <ComboBox x:Name="TypeCombobox"
+                      Grid.Row="1"
+                      Grid.Column="0"/>
+            <ComboBox x:Name="CityCombobox"
+                      Grid.Row="2"
+                      Grid.Column="0" />
+            <!-- Stack panel for controls that are able to filter the price -->
+            <StackPanel x:Name="PriceStackPanel"
+                        Orientation="Horizontal"
+                        Grid.Row="1"
+                        Grid.Column="1">
+                <Label Content="{x:Static local:LanguageBundle.UpperPrice}"/>
+                <TextBox x:Name="PriceFromTextBox"
+                         MinWidth="150"/>
+                <Label Content="-"/>
+                <TextBox x:Name="PriceUntilTextBox"
+                         MinWidth="150"/>
+            </StackPanel>
+            <!-- Stack panel for controls that are able to filter renting or buying -->
+            <StackPanel x:Name="ChoiceBoxStackPanel"
+                        Orientation="Horizontal"
+                        Grid.Row="2"
+                        Grid.Column="1">
+                <CheckBox x:Name="RentCheckBox"
+                          IsChecked="True">For rent</CheckBox>
+                <CheckBox x:Name="PurchaseCheckBox"
+                          IsChecked="True">For purchase</CheckBox>
+            </StackPanel>
+        </Grid>
+        <!-- StackPanel that holds buttons that interact with the DataGrid -->
+        <StackPanel Grid.Row="1"
+                    Grid.Column="0"
+                    Width="Auto"
+                    Height="Auto"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right">
+            <Button x:Name="AddButton"
+                    Click="AddButton_OnClick"
+                    Width="Auto"
+                    Height="Auto"
+                    ClickMode="Press"
+                    Content="{x:Static local:LanguageBundle.UpperAdd}"/>
+            <Button x:Name="EditButton"
+                    Click="EditButton_OnClick"
+                    Width="Auto"
+                    Height="Auto"
+                    ClickMode="Press"
+                    Content="{x:Static local:LanguageBundle.UpperEdit}"/>
+            <Button x:Name="DeleteButton"
+                    Click="DeleteButton_OnClick"
+                    Width="Auto"
+                    Height="Auto"
+                    ClickMode="Press"
+                    Content="{x:Static local:LanguageBundle.UpperDelete}"/>
+        </StackPanel>
+        <!-- Table that displays data -->
+        <DataGrid x:Name="MainDataGrid" 
+                  Grid.Row="2"
+                  Grid.Column="0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Type" 
+                                    Binding="{Binding Type}"/>
+                <DataGridTextColumn Header="Street" 
+                                    Binding="{Binding Address.Street}"/>
+                <DataGridTextColumn Header="House number" 
+                                    Binding="{Binding Address.HouseNumber}"/>
+                <DataGridTextColumn Header="Zip Code" 
+                                    Binding="{Binding Address.ZipCode}"/>
+                <DataGridTextColumn Header="City" 
+                                    Binding="{Binding Address.City}"/>
+                <DataGridTextColumn Header="Amount of rooms" 
+                                    Binding="{Binding AmountOfRooms}"/>
+                <DataGridTextColumn Header="Price" 
+                                    Binding="{Binding Price}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

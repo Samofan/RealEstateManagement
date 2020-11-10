@@ -6,4 +6,27 @@
         <UseWPF>true</UseWPF>
     </PropertyGroup>
 
+    <ItemGroup>
+      <Folder Include="ViewModels" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\RealEstateManagementLibrary\RealEstateManagementLibrary.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Update="Resources\i18n\LanguageBundle.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>LanguageBundle.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Resources\i18n\LanguageBundle.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>LanguageBundle.resx</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
 </Project>

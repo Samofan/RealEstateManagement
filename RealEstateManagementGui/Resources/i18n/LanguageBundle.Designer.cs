@@ -19,10 +19,10 @@ namespace RealEstateManagementGui.Resources.i18n {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class LanguageBundle {
+    public class LanguageBundle {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace RealEstateManagementGui.Resources.i18n {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("RealEstateManagementGui.Resources.i18n.LanguageBundle", typeof(LanguageBundle).Assembly);
@@ -51,7 +51,7 @@ namespace RealEstateManagementGui.Resources.i18n {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace RealEstateManagementGui.Resources.i18n {
         /// <summary>
         ///   Looks up a localized string similar to Add.
         /// </summary>
-        internal static string UpperAdd {
+        public static string UpperAdd {
             get {
                 return ResourceManager.GetString("UpperAdd", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace RealEstateManagementGui.Resources.i18n {
         /// <summary>
         ///   Looks up a localized string similar to Delete.
         /// </summary>
-        internal static string UpperDelete {
+        public static string UpperDelete {
             get {
                 return ResourceManager.GetString("UpperDelete", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace RealEstateManagementGui.Resources.i18n {
         /// <summary>
         ///   Looks up a localized string similar to Edit.
         /// </summary>
-        internal static string UpperEdit {
+        public static string UpperEdit {
             get {
                 return ResourceManager.GetString("UpperEdit", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace RealEstateManagementGui.Resources.i18n {
         /// <summary>
         ///   Looks up a localized string similar to Filter.
         /// </summary>
-        internal static string UpperFilter {
+        public static string UpperFilter {
             get {
                 return ResourceManager.GetString("UpperFilter", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace RealEstateManagementGui.Resources.i18n {
         /// <summary>
         ///   Looks up a localized string similar to Price.
         /// </summary>
-        internal static string UpperPrice {
+        public static string UpperPrice {
             get {
                 return ResourceManager.GetString("UpperPrice", resourceCulture);
             }

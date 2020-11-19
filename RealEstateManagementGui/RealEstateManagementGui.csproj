@@ -15,8 +15,11 @@
     </ItemGroup>
 
     <ItemGroup>
+      <EmbeddedResource Update="Resources\i18n\LanguageBundle.de.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+      </EmbeddedResource>
       <EmbeddedResource Update="Resources\i18n\LanguageBundle.resx">
-        <Generator>ResXFileCodeGenerator</Generator>
+        <Generator>PublicResXFileCodeGenerator</Generator>
         <LastGenOutput>LanguageBundle.Designer.cs</LastGenOutput>
       </EmbeddedResource>
     </ItemGroup>
